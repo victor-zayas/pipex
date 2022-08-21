@@ -1,31 +1,54 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strjoin_free.c                                  :+:      :+:    :+:   */
+/*   ft_strjoin.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: amarzana <amarzana@student.42.fr>          +#+  +:+       +#+        */
+/*   By: vzayas-s <vzayas-s@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/04/06 15:27:24 by amarzana          #+#    #+#             */
-/*   Updated: 2022/07/11 09:57:28 by amarzana         ###   ########.fr       */
+/*   Created: 2022/08/21 20:39:20 by vzayas-s          #+#    #+#             */
+/*   Updated: 2022/08/21 20:42:06 by vzayas-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../pipex.h"
-#include <stdlib.h>
+#include"../pipex.h"
 
-char	*ft_strjoin_free(char *s1, char *s2)
+static int	ft_len(const char *str, char c)
 {
-	char	*ptr;
-	size_t	len;
+	int	count;
 
-	if (!s1 || !s2)
+	count = -1;
+	while (str[++count] != '\0')
+	{
+		if (str[count] == c)
+			return (count);
+	}
+	return (count);
+}
+
+char	*ft_strjoin(char *str, char *tmp)
+{
+	char	*s;
+	int		i;
+	int		j;
+
+	if (!str)
+	{
+		str = malloc(1);
+		*str = '\0';
+	}
+	s = (char *)malloc(ft_len(str, 0) + ft_len(tmp, 0) + 1);
+	if (!s)
 		return (NULL);
-	len = ft_strlen(s1) + ft_strlen(s2);
-	ptr = (char *)malloc(len + 1);
-	if (ptr == NULL)
-		return (NULL);
-	ft_strlcpy(ptr, s1, (ft_strlen(s1) + 1));
-	free (s1);
-	ft_strlcat(ptr, s2, (len + 1));
-	return (ptr);
+	i = 0;
+	j = 0;
+	while (str[i])
+	{
+		s[i] = str[i];
+		i++;
+	}
+	while (tmp[j])
+		s[i++] = tmp[j++];
+	free (str);
+	s[i] = '\0';
+	return (s);
 }

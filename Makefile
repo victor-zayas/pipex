@@ -6,25 +6,23 @@
 #    By: vzayas-s <vzayas-s@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/08/16 19:17:31 by vzayas-s          #+#    #+#              #
-#    Updated: 2022/08/19 11:46:44 by vzayas-s         ###   ########.fr        #
+#    Updated: 2022/08/21 20:40:58 by vzayas-s         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
-
 
 # NAME #
 NAME = pipex
 
 # SRCS #
-SRC = pipex.c 					\
-	  ./libft/ft_putendl_fd.c	\
-	  ./libft/ft_putstr_fd.c	\
-	  ./libft/ft_split.c 		\
-	  ./libft/ft_strjoin_free.c	\
-	  ./libft/ft_strlcat.c		\
-	  ./libft/ft_strlcpy.c		\
-	  ./libft/ft_strlen.c		\
-	  ./libft/ft_strnstr.c		\
-	  ./libft/ft_substr.c	
+SRC = pipex.c 			\
+	  libft/ft_split.c	\
+	  libft/ft_strncmp.c\
+	  libft/ft_substr.c \
+	  libft/ft_strlen.c \
+	  libft/ft_strjoin.c\
+
+# INCLUDES #
+INCLUDE = -I pipex.h
 
 # OBJS #
 OBJ = $(SRC:.c=.o)
@@ -61,7 +59,7 @@ export PIPEX
 .SILENT:
 
 $(NAME) : $(OBJ)
-	$(CC) $(CFLAGS) $(OBJ) -o $(NAME)
+	$(CC) $(CFLAGS) $(OBJ) -o $(NAME) $(INCLUDE)
 	echo "$(BLUE)༺ library created༻$(END)"
 	echo "$$PIPEX"
 

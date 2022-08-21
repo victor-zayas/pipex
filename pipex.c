@@ -6,14 +6,41 @@
 /*   By: vzayas-s <vzayas-s@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/16 19:20:22 by vzayas-s          #+#    #+#             */
-/*   Updated: 2022/08/19 12:15:13 by vzayas-s         ###   ########.fr       */
+/*   Updated: 2022/08/21 20:47:38 by vzayas-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include<stdio.h>
-#include<fcntl.h>
+#include"pipex.h"
 
-void	parent_p(f2, cmd2)
+int main(int  __attribute__((unused))argc, char __attribute__((unused))**argv, char **envp)
+{
+	char **p;
+	int 	i;
+	
+	i = 0;
+	while(envp[i])
+	{
+		if (!ft_strncmp(envp[i], "PATH=", 5))
+		{
+			//sustituir envp[i] por variable temp//
+			envp[i] = ft_substr(envp[i], 5, ft_strlen(envp[i]) - 5);
+			p = ft_split(envp[i], ':');
+			break;
+		}
+		i++;
+	}
+	i = 0;
+	while(p[i])
+	{
+		p[i] = ft_strjoin(p[i], "/");
+		//asi funciona el execv, esto no compila//
+		//execv(p[i], argv[3], envp);
+		printf("%s\n", p[i]);
+		i++;
+	}
+}
+
+/* void	parent_p(f2, cmd2)
 {
 	int	status;
 
@@ -60,7 +87,7 @@ int	main(int ac, char **ag, char **envp)
 		return (-1);
 	pipex(f1, f2, ag, envp);
 	return (0);
-}
+} */
 
 /* int	main(void)
 {

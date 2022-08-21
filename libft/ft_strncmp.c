@@ -1,25 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlen.c                                        :+:      :+:    :+:   */
+/*   ft_strncmp.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vzayas-s <vzayas-s@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/04/07 12:48:06 by vzayas-s          #+#    #+#             */
-/*   Updated: 2022/08/21 20:26:56 by vzayas-s         ###   ########.fr       */
+/*   Created: 2022/03/29 11:36:51 by vzayas-s          #+#    #+#             */
+/*   Updated: 2022/08/21 20:26:46 by vzayas-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include"../pipex.h"
 
-size_t	ft_strlen(const char *str)
+int	ft_strncmp(const char *s1, const char *s2, size_t n)
 {
-	int	count;
+	size_t			i;
+	unsigned char	*a;
+	unsigned char	*b;
 
-	count = 0;
-	while (str[count])
+	a = (unsigned char *)s1;
+	b = (unsigned char *)s2;
+	i = 0;
+	if (n == 0)
+		return (0);
+	while ((a[i] || b[i]) && (i < n - 1))
 	{
-		count++;
+		if (a[i] != b[i])
+			return (a[i] - b[i]);
+		i++;
 	}
-	return (count);
+	return (a[i] - b[i]);
 }

@@ -3,36 +3,40 @@
 /*                                                        :::      ::::::::   */
 /*   ft_substr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: amarzana <amarzana@student.42.fr>          +#+  +:+       +#+        */
+/*   By: vzayas-s <vzayas-s@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/04/04 16:15:51 by marvin            #+#    #+#             */
-/*   Updated: 2022/07/11 09:58:05 by amarzana         ###   ########.fr       */
+/*   Created: 2022/04/07 12:48:58 by vzayas-s          #+#    #+#             */
+/*   Updated: 2022/04/07 12:48:58 by vzayas-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../pipex.h"
-#include <stdlib.h>
-#include <stdio.h>
+#include"../pipex.h"
 
 char	*ft_substr(char const *s, unsigned int start, size_t len)
 {
-	char	*str;
+	char	*result;
 	size_t	i;
 
-	if (!s)
+	if (s == NULL)
 		return (NULL);
+	if (len > ft_strlen(s))
+		len = ft_strlen(s);
 	i = 0;
-	while (s[i] && i < len)
-		i++;
-	if (len <= 0 || start >= ft_strlen(s))
-	{
-		str = (char *)malloc(1);
-		*str = '\0';
-		return (str);
-	}
-	str = (char *)malloc(i + 1);
-	if (!str)
+	result = (char *)malloc(sizeof(char) * (len + 1));
+	if (result == NULL)
 		return (NULL);
-	ft_strlcpy(str, &s[start], i + 1);
-	return (str);
+	while (start > ft_strlen(s))
+	{
+		*result = '\0';
+		return (result);
+	}
+	while (len > 0 && start < ft_strlen(s))
+	{
+		result[i] = s[start];
+		i++;
+		start++;
+		len--;
+	}
+	result[i] = '\0';
+	return (result);
 }
