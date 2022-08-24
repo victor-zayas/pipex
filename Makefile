@@ -6,7 +6,7 @@
 #    By: vzayas-s <vzayas-s@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/08/16 19:17:31 by vzayas-s          #+#    #+#              #
-#    Updated: 2022/08/24 15:19:28 by vzayas-s         ###   ########.fr        #
+#    Updated: 2022/08/24 18:09:09 by vzayas-s         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,18 +21,19 @@ RM = /bin/rm -rf
 # INCLUDES #
 INCLUDE = -I pipex.h
 
-# OBJS #
-DIR_OBJS = objs/
-OBJS = $(SRCS:.c=.o)
-PREFIXED = $(addprefix $(DIR_OBJS), $(OBJS))
-
 # SRCS #
-SRCS = pipex.c 					\
-	  src/libft/ft_split.c		\
-	  src/libft/ft_strncmp.c	\
-	  src/libft/ft_substr.c 	\
-	  src/libft/ft_strlen.c 	\
-	  src/libft/ft_strjoin.c
+SRCS = src/pipex.c 				\
+	   src/utils.c				\
+	   src/libft/ft_split.c		\
+	   src/libft/ft_strncmp.c	\
+	   src/libft/ft_substr.c 	\
+	   src/libft/ft_strlen.c 	\
+	   src/libft/ft_strjoin.c	\
+	   src/libft/ft_putendl_fd.c\
+	   src/libft/ft_putstr_fd.c \
+
+# OBJS #
+OBJS = *.o #$(SRCS:.c=.o)
 
 # MAKEFILE ART #
 # COLORS #
@@ -59,15 +60,13 @@ export PIPEX
 
 .SILENT:
 
-$(NAME) : $(PREFIXED)
-	$(CC) $(CFLAGS) -o $(NAME) $(PREFIXED)
+$(NAME) : $(OBJS)
+	$(CC) $(CFLAGS) $(OBJS) -o $(NAME) $(INCLUDE)
 	echo "$(BLUE)༺ library created༻$(END)"
 	echo "$$PIPEX"
 
-$(DIR_OBJS)%.o : %.c $(INCLUDE)
-	mkdir -p $(DIR_OBJS)/srcs/libft
-	$(CC) $(CFLAGS) -c $< -o $@
-	echo "$(MAG)༺ OBJS folder created༻$(END)"
+$(OBJS) : $(SRCS)
+	$(CC) $(CFLAGS) -c $(SRCS)
 
 all: $(NAME)
 
