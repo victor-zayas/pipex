@@ -6,11 +6,11 @@
 /*   By: vzayas-s <vzayas-s@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/29 11:36:51 by vzayas-s          #+#    #+#             */
-/*   Updated: 2022/08/21 20:26:46 by vzayas-s         ###   ########.fr       */
+/*   Updated: 2022/08/24 15:04:47 by vzayas-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include"../pipex.h"
+#include"../../pipex.h"
 
 int	ft_strncmp(const char *s1, const char *s2, size_t n)
 {

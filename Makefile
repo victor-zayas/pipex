@@ -6,31 +6,33 @@
 #    By: vzayas-s <vzayas-s@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/08/16 19:17:31 by vzayas-s          #+#    #+#              #
-#    Updated: 2022/08/21 20:40:58 by vzayas-s         ###   ########.fr        #
+#    Updated: 2022/08/24 15:19:28 by vzayas-s         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 # NAME #
 NAME = pipex
 
-# SRCS #
-SRC = pipex.c 			\
-	  libft/ft_split.c	\
-	  libft/ft_strncmp.c\
-	  libft/ft_substr.c \
-	  libft/ft_strlen.c \
-	  libft/ft_strjoin.c\
+# COMPILATION #
+CC = gcc
+CFLAGS = -Wall -Wextra -Werror -g3 #-fsanitize=address
+RM = /bin/rm -rf
 
 # INCLUDES #
 INCLUDE = -I pipex.h
 
 # OBJS #
-OBJ = $(SRC:.c=.o)
+DIR_OBJS = objs/
+OBJS = $(SRCS:.c=.o)
+PREFIXED = $(addprefix $(DIR_OBJS), $(OBJS))
 
-# COMPILATION #
-CC = gcc
-CFLAGS = -Wall -Wextra -Werror #-fsanitize=address -g3
-RM = /bin/rm -rf
+# SRCS #
+SRCS = pipex.c 					\
+	  src/libft/ft_split.c		\
+	  src/libft/ft_strncmp.c	\
+	  src/libft/ft_substr.c 	\
+	  src/libft/ft_strlen.c 	\
+	  src/libft/ft_strjoin.c
 
 # MAKEFILE ART #
 # COLORS #
@@ -53,23 +55,24 @@ $(WHITE) ╩ $(RED)╩ ╩ $(YELLOW)╚═╝ $(GREEN)╩   $(CYAN)╩ $(BLUE)�
 endef
 export PIPEX
 
-
 # RULES #
 
 .SILENT:
 
-$(NAME) : $(OBJ)
-	$(CC) $(CFLAGS) $(OBJ) -o $(NAME) $(INCLUDE)
+$(NAME) : $(PREFIXED)
+	$(CC) $(CFLAGS) -o $(NAME) $(PREFIXED)
 	echo "$(BLUE)༺ library created༻$(END)"
 	echo "$$PIPEX"
 
-$(OBJ) : $(SRC)
-	$(CC) $(CFLAGS) -c $(SRC)
+$(DIR_OBJS)%.o : %.c $(INCLUDE)
+	mkdir -p $(DIR_OBJS)/srcs/libft
+	$(CC) $(CFLAGS) -c $< -o $@
+	echo "$(MAG)༺ OBJS folder created༻$(END)"
 
 all: $(NAME)
 
 clean:
-	$(RM) $(OBJ) $(BONUS_OBJS)
+	$(RM) $(OBJ) $(DIR_OBJS) *.o a.out
 	echo "$(RED)༺ Objs deleted༻$(END)"
 
 fclean: clean
@@ -78,4 +81,4 @@ fclean: clean
 
 re: fclean all
 
-.PHONY: all clean fclean re bonus
+.PHONY: all clean fclean re
