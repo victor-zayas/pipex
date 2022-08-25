@@ -6,7 +6,7 @@
 /*   By: vzayas-s <vzayas-s@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/16 19:20:22 by vzayas-s          #+#    #+#             */
-/*   Updated: 2022/08/24 18:34:47 by vzayas-s         ###   ########.fr       */
+/*   Updated: 2022/08/25 12:35:25 by vzayas-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,7 +91,7 @@ int	main(int argc, char **argv, char **envp)
 {
 	if (argc != 5)
 	{
-		ft_putstr_fd("Invalid argument number. Check and try again\n", 2);
+		ft_putstr_fd("Invalid number of arguments\n", 2);
 		exit(0);
 	}
 	check_cmd(argc, argv, envp);

@@ -6,7 +6,7 @@
 #    By: vzayas-s <vzayas-s@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/08/16 19:17:31 by vzayas-s          #+#    #+#              #
-#    Updated: 2022/08/24 18:09:09 by vzayas-s         ###   ########.fr        #
+#    Updated: 2022/08/25 12:31:19 by vzayas-s         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -71,7 +71,7 @@ $(OBJS) : $(SRCS)
 all: $(NAME)
 
 clean:
-	$(RM) $(OBJ) $(DIR_OBJS) *.o a.out
+	$(RM) $(OBJ) $(DIR_OBJS) *.o a.out outfile
 	echo "$(RED)༺ Objs deleted༻$(END)"
 
 fclean: clean

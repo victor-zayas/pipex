@@ -6,7 +6,7 @@
 /*   By: vzayas-s <vzayas-s@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/24 17:25:00 by vzayas-s          #+#    #+#             */
-/*   Updated: 2022/08/24 18:37:05 by vzayas-s         ###   ########.fr       */
+/*   Updated: 2022/08/25 12:31:03 by vzayas-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ static char	**make_path(char **args, char **envp)
 	path = NULL;
 	aux = NULL;
 	i = 0;
-	while (!ft_strncmp(envp[i], "PATH=", 5))
+	while (ft_strncmp(envp[i], "PATH=", 5))
 		i++;
 	aux = ft_substr(envp[i], 5, ft_strlen(envp[i]) - 5);
 	path = ft_split(aux, ':');
