@@ -1,27 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putstr_fd.c                                     :+:      :+:    :+:   */
+/*   ft_strlen.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vzayas-s <vzayas-s@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/08/24 17:29:15 by vzayas-s          #+#    #+#             */
-/*   Updated: 2022/08/24 17:29:35 by vzayas-s         ###   ########.fr       */
+/*   Created: 2022/04/07 12:48:06 by vzayas-s          #+#    #+#             */
+/*   Updated: 2022/08/30 16:16:23 by vzayas-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include"../../pipex.h"
+#include"../pipex.h"
 
-void	ft_putstr_fd(char *s, int fd)
+size_t	ft_strlen(const char *str)
 {
-	int	i;
+	int	count;
 
-	if (s == NULL || fd < 0)
-		return ;
-	i = 0;
-	while (s[i])
+	count = 0;
+	while (str[count])
 	{
-		write(fd, &s[i], 1);
-		i++;
+		count++;
 	}
+	return (count);
 }

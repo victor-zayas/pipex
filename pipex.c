@@ -6,11 +6,11 @@
 /*   By: vzayas-s <vzayas-s@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/16 19:20:22 by vzayas-s          #+#    #+#             */
-/*   Updated: 2022/08/25 12:35:25 by vzayas-s         ###   ########.fr       */
+/*   Updated: 2022/08/30 16:16:15 by vzayas-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include"../pipex.h"
+#include"pipex.h"
 
 static void	child1(int *fd, char **argv, char **envp)
 {

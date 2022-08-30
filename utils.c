@@ -6,11 +6,11 @@
 /*   By: vzayas-s <vzayas-s@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/24 17:25:00 by vzayas-s          #+#    #+#             */
-/*   Updated: 2022/08/25 12:31:03 by vzayas-s         ###   ########.fr       */
+/*   Updated: 2022/08/30 16:17:08 by vzayas-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include"../pipex.h"
+#include"pipex.h"
 
 static char	**make_path(char **args, char **envp)
 {
@@ -69,7 +69,7 @@ int	get_fd(char *file, int n)
 		if (fd < 0)
 		{
 			close(fd);
-			ft_putstr_fd("Invalid or missing input file\n", 2);
+			ft_putstr_fd("Invalid fd\n", 2);
 			exit(0);
 		}
 		return (fd);

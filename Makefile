@@ -6,7 +6,7 @@
 #    By: vzayas-s <vzayas-s@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/08/16 19:17:31 by vzayas-s          #+#    #+#              #
-#    Updated: 2022/08/25 12:31:19 by vzayas-s         ###   ########.fr        #
+#    Updated: 2022/08/30 16:37:06 by vzayas-s         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,22 +18,34 @@ CC = gcc
 CFLAGS = -Wall -Wextra -Werror -g3 #-fsanitize=address
 RM = /bin/rm -rf
 
+# OBJS #
+OBJS = $(SRCS:.c=.o)
+B_OBJ = $(BONUS:.c=.o)
+
 # INCLUDES #
 INCLUDE = -I pipex.h
 
 # SRCS #
-SRCS = src/pipex.c 				\
-	   src/utils.c				\
-	   src/libft/ft_split.c		\
-	   src/libft/ft_strncmp.c	\
-	   src/libft/ft_substr.c 	\
-	   src/libft/ft_strlen.c 	\
-	   src/libft/ft_strjoin.c	\
-	   src/libft/ft_putendl_fd.c\
-	   src/libft/ft_putstr_fd.c \
+SRCS = pipex.c 				\
+	   utils.c				\
+	   libft/ft_split.c		\
+	   libft/ft_strncmp.c	\
+	   libft/ft_substr.c 	\
+	   libft/ft_strlen.c 	\
+	   libft/ft_strjoin.c	\
+	   libft/ft_putendl_fd.c\
+	   libft/ft_putstr_fd.c \
 
-# OBJS #
-OBJS = *.o #$(SRCS:.c=.o)
+BONUS = bonus.c					\
+		utils.c					\
+	    libft/ft_split.c		\
+	    libft/ft_strncmp.c		\
+	    libft/ft_substr.c 		\
+	    libft/ft_strlen.c 		\
+	    libft/ft_strjoin.c		\
+	    libft/ft_putendl_fd.c	\
+	    libft/ft_putstr_fd.c 	\
+
 
 # MAKEFILE ART #
 # COLORS #
@@ -60,18 +72,20 @@ export PIPEX
 
 .SILENT:
 
-$(NAME) : $(OBJS)
-	$(CC) $(CFLAGS) $(OBJS) -o $(NAME) $(INCLUDE)
+all: $(NAME)
+
+$(NAME): $(OBJS)
+	@$(CC) $(CFLAGS) -o $(NAME) $(OBJS) $(INCLUDE)
 	echo "$(BLUE)༺ library created༻$(END)"
 	echo "$$PIPEX"
 
-$(OBJS) : $(SRCS)
-	$(CC) $(CFLAGS) -c $(SRCS)
-
-all: $(NAME)
+bonus: $(B_OBJ)
+	@$(CC) $(CFLAGS) -o $(NAME) $(B_OBJ) $(INCLUDE)
+	   echo "$(GREEN)༺ Bonus compiled༻$(END)"
+	   echo "$$PIPEX"
 
 clean:
-	$(RM) $(OBJ) $(DIR_OBJS) *.o a.out outfile
+	$(RM) $(OBJ) $(B_OBJ) *.o a.out outfile
 	echo "$(RED)༺ Objs deleted༻$(END)"
 
 fclean: clean

@@ -6,11 +6,11 @@
 /*   By: vzayas-s <vzayas-s@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/08 17:35:01 by vzayas-s          #+#    #+#             */
-/*   Updated: 2022/08/24 15:04:34 by vzayas-s         ###   ########.fr       */
+/*   Updated: 2022/08/30 16:16:31 by vzayas-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include"../../pipex.h"
+#include"../pipex.h"
 
 static int	ft_countwords(const char *s, char c)
 {

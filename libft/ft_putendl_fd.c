@@ -6,11 +6,11 @@
 /*   By: vzayas-s <vzayas-s@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/24 17:49:56 by vzayas-s          #+#    #+#             */
-/*   Updated: 2022/08/24 17:50:21 by vzayas-s         ###   ########.fr       */
+/*   Updated: 2022/08/30 16:16:39 by vzayas-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include"../../pipex.h"
+#include"../pipex.h"
 
 void	ft_putendl_fd(char *s, int fd)
 {

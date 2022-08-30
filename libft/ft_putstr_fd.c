@@ -1,33 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strncmp.c                                       :+:      :+:    :+:   */
+/*   ft_putstr_fd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vzayas-s <vzayas-s@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/03/29 11:36:51 by vzayas-s          #+#    #+#             */
-/*   Updated: 2022/08/24 15:04:47 by vzayas-s         ###   ########.fr       */
+/*   Created: 2022/08/24 17:29:15 by vzayas-s          #+#    #+#             */
+/*   Updated: 2022/08/30 16:16:34 by vzayas-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include"../../pipex.h"
+#include"../pipex.h"
 
-int	ft_strncmp(const char *s1, const char *s2, size_t n)
+void	ft_putstr_fd(char *s, int fd)
 {
-	size_t			i;
-	unsigned char	*a;
-	unsigned char	*b;
+	int	i;
 
-	a = (unsigned char *)s1;
-	b = (unsigned char *)s2;
+	if (s == NULL || fd < 0)
+		return ;
 	i = 0;
-	if (n == 0)
-		return (0);
-	while ((a[i] || b[i]) && (i < n - 1))
+	while (s[i])
 	{
-		if (a[i] != b[i])
-			return (a[i] - b[i]);
+		write(fd, &s[i], 1);
 		i++;
 	}
-	return (a[i] - b[i]);
 }
