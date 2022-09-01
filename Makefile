@@ -6,7 +6,7 @@
 #    By: vzayas-s <vzayas-s@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/08/16 19:17:31 by vzayas-s          #+#    #+#              #
-#    Updated: 2022/08/30 16:37:06 by vzayas-s         ###   ########.fr        #
+#    Updated: 2022/09/01 15:50:48 by vzayas-s         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -37,7 +37,7 @@ SRCS = pipex.c 				\
 	   libft/ft_putstr_fd.c \
 
 BONUS = bonus.c					\
-		utils.c					\
+		utils_bonus.c			\
 	    libft/ft_split.c		\
 	    libft/ft_strncmp.c		\
 	    libft/ft_substr.c 		\
@@ -85,7 +85,7 @@ bonus: $(B_OBJ)
 	   echo "$$PIPEX"
 
 clean:
-	$(RM) $(OBJ) $(B_OBJ) *.o a.out outfile
+	$(RM) $(OBJ) $(B_OBJ) *.o a.out outfile.txt
 	echo "$(RED)༺ Objs deleted༻$(END)"
 
 fclean: clean

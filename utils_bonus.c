@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utils.c                                            :+:      :+:    :+:   */
+/*   utils_bonus.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vzayas-s <vzayas-s@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/24 17:25:00 by vzayas-s          #+#    #+#             */
-/*   Updated: 2022/09/01 12:14:53 by vzayas-s         ###   ########.fr       */
+/*   Updated: 2022/09/01 16:18:59 by vzayas-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,6 +72,11 @@ int	get_fd(char *file, int n)
 		}
 		return (fd);
 	}
+	else if (n == 2)
+	{
+		fd = open(file, O_CREAT | O_RDWR | O_APPEND, 0644);
+		return (fd);
+	}
 	else
 	{
 		fd = open(file, O_CREAT | O_RDWR | O_TRUNC, 0644);
@@ -95,7 +100,10 @@ void	check_cmd(int argc, char **argv, char **envp)
 	char	**args;
 	int		i;
 
-	i = 2;
+	if (ft_strncmp(argv[1], "here_doc", ft_strlen(argv[1])) == 0)
+		i = 3;
+	else
+		i = 2;
 	while (i <= (argc - 2))
 	{
 		args = ft_split(argv[i], ' ');
@@ -103,7 +111,7 @@ void	check_cmd(int argc, char **argv, char **envp)
 		if (!path)
 		{
 			free(path);
-			ft_putstr_fd("Invalid command: ", 2);
+			ft_putstr_fd("Invalid command : ", 2);
 			ft_putendl_fd(args[0], 2);
 			ft_free(args);
 			exit(0);
