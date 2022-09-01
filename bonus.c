@@ -6,7 +6,7 @@
 /*   By: vzayas-s <vzayas-s@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/16 19:20:22 by vzayas-s          #+#    #+#             */
-/*   Updated: 2022/09/01 16:19:03 by vzayas-s         ###   ########.fr       */
+/*   Updated: 2022/09/01 16:26:18 by vzayas-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,6 +75,18 @@ static void	dups_function(int argc, char **argv)
 	close (fdout);
 }
 
+static	int	check_input(char **argv)
+{
+	int	i;
+
+	i = 0;
+	if (ft_strncmp(argv[1], "here_doc", ft_strlen(argv[1])) == 0)
+			i = 3;
+	else
+			i = 2;
+	return (i);
+}
+
 int	main(int argc, char **argv, char **envp)
 {
 	int	i;
@@ -87,10 +99,7 @@ int	main(int argc, char **argv, char **envp)
 	}
 	else
 	{
-		if (ft_strncmp(argv[1], "here_doc", ft_strlen(argv[1])) == 0)
-			i = 3;
-		else
-			i = 2;
+		i = check_input(argv);
 		check_cmd(argc, argv, envp);
 		dups_function(argc, argv);
 		pid = fork();

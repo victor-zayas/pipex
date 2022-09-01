@@ -6,7 +6,7 @@
 #    By: vzayas-s <vzayas-s@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/08/16 19:17:31 by vzayas-s          #+#    #+#              #
-#    Updated: 2022/09/01 15:50:48 by vzayas-s         ###   ########.fr        #
+#    Updated: 2022/09/01 16:21:14 by vzayas-s         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -38,6 +38,7 @@ SRCS = pipex.c 				\
 
 BONUS = bonus.c					\
 		utils_bonus.c			\
+		check_cmds.c			\
 	    libft/ft_split.c		\
 	    libft/ft_strncmp.c		\
 	    libft/ft_substr.c 		\

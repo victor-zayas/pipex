@@ -6,7 +6,7 @@
 /*   By: vzayas-s <vzayas-s@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/24 17:25:00 by vzayas-s          #+#    #+#             */
-/*   Updated: 2022/09/01 16:18:59 by vzayas-s         ###   ########.fr       */
+/*   Updated: 2022/09/01 16:21:41 by vzayas-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,35 +92,4 @@ void	ft_free(char **ptr)
 	while (ptr[i])
 		free(ptr[i++]);
 	free(ptr);
-}
-
-void	check_cmd(int argc, char **argv, char **envp)
-{
-	char	*path;
-	char	**args;
-	int		i;
-
-	if (ft_strncmp(argv[1], "here_doc", ft_strlen(argv[1])) == 0)
-		i = 3;
-	else
-		i = 2;
-	while (i <= (argc - 2))
-	{
-		args = ft_split(argv[i], ' ');
-		path = get_path(args, envp);
-		if (!path)
-		{
-			free(path);
-			ft_putstr_fd("Invalid command : ", 2);
-			ft_putendl_fd(args[0], 2);
-			ft_free(args);
-			exit(0);
-		}
-		else
-		{
-			ft_free(args);
-			free(path);
-		}
-		i++;
-	}
 }
